@@ -66,12 +66,13 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 	<script>
 		const display = (lat, long) => {
+			document.getElementById("6_day_forecast").innerHTML = "";
 			var url =`https://api.darksky.net/forecast/9e6680358b671f1146a6f41d708cbbc3/${lat},${long}`; //Place your DarkSky API Call Here 
 			$.ajax({url:url, dataType:"jsonp"}).then(function(data) {
 				console.log(data);//Review all of the data returned
 		console.log("Current Temp: " + data.currently.apparentTemperature);//View Today's Temp
 		console.log("Tomorrow's High: " + data.daily.data[1].apparentTemperatureHigh);//View Tomorrow's High
-
+			
 		var unix_time = data.currently.time;//Retrieve the current timestamp
 		var javascript_time = new Date(unix_time * 1000);//Convert the unix time stamp to javascript
 		console.log(javascript_time);
